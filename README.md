@@ -5,7 +5,7 @@
 This repository contains a sample Ruby application created as part of a DevOps assignment. The project demonstrates end-to-end DevOps practices including source control, CI/CD pipeline setup, Dockerization, infrastructure provisioning, and deployment.
 
 ## Tech Stack & Tools
-- **Language**: Ruby (with or without Rails)
+- **Language**: Ruby on Rails
 - **Version Control**: Git & GitHub
 - **CI/CD**: Jenkins
 - **Containerization**: Docker
@@ -45,10 +45,10 @@ Terraform is used to provision:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/devops-assignment.git
+git clone 
 
 # Navigate to the app
-cd devops-assignment
+cd 
 
 # Run Docker container (example)
 docker build -t ruby-app .
