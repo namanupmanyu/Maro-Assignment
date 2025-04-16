@@ -8,6 +8,7 @@ WORKDIR /app
 COPY Gemfile* ./
 
 RUN gem install bundler:2.5.22
+RUN gem install rails
 
 COPY . .
 
