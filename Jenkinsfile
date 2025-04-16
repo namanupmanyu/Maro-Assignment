@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+        stage('Test') {
             steps {
-                git 'https://github.com/namanupmanyu/Maro-Assignment.git'
+                 echo "Building the Ruby app..."
             }
         }
 
