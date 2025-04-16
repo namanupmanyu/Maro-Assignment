@@ -14,5 +14,5 @@ COPY . .
 
 EXPOSE 4000
 
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", "4000"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "4000"]
 
