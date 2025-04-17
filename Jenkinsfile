@@ -16,7 +16,7 @@ pipeline {
 
         stage('Tag Docker Image') {
             steps {
-                sh 'docker tag ruby-sample-app nupmanyu002/ruby-sample-app'
+                sh 'docker tag ruby-sample-app nupmanyu/ruby-sample-app'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
                 )]) {
                     sh '''
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker push nupmanyu002/ruby-sample-app
+                        docker push nupmanyu/ruby-sample-app
                     '''
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 4000:4000 nupmanyu002/ruby-sample-app'
+                sh 'docker run -d -p 4000:4000 nupmanyu/ruby-sample-app'
             }
         }
     }
