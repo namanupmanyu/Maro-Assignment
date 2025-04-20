@@ -36,7 +36,7 @@ pipeline {
                     docker-compose pull
 
                     # Start the new container using the updated image
-                    docker-compose up -d
+                    docker-compose up -d --build --no-cache
                 '''
             }
         }
