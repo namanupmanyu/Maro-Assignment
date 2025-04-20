@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker-compose build'
+                sh 'docker build -t nupmanyu/ruby-sample-app .'
             }
         }
 
@@ -23,7 +23,7 @@ pipeline {
                 )]) {
                     sh '''
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker-compose push
+                        docker push nupmanyu/ruby-sample-app
                     '''
                 }
             }
@@ -32,9 +32,11 @@ pipeline {
         stage('Deploy with Docker Compose') {
             steps {
                 sh '''
-                    docker-compose down || true
+                    # Pull the latest image from Docker Hub
                     docker-compose pull
-                    docker-compose up -d
+
+                    # Start the new container using the updated image
+                    docker-compose up -d --build
                 '''
             }
         }
