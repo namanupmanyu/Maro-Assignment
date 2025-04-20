@@ -1,10 +1,12 @@
-resource "aws_instance" "instance" {
-            ami= var.ami
-            instance_type= var.instance
-            key_name  = var.key
-           associate_public_ip_address = true
-
-      tags = {
-    Name = "app-instance"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.95.0"
+    }
   }
+}
+
+provider "aws" {
+  region = "us-west-1"
 }
