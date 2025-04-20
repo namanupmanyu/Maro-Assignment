@@ -10,13 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t ruby-sample-app .'
-            }
-        }
-
-        stage('Tag Docker Image') {
-            steps {
-                sh 'docker tag ruby-sample-app nupmanyu/ruby-sample-app'
+                sh 'docker-compose build'
             }
         }
 
@@ -29,17 +23,20 @@ pipeline {
                 )]) {
                     sh '''
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker push nupmanyu/ruby-sample-app
+                        docker-compose push
                     '''
                 }
             }
         }
 
-        stage('Run Container') {
+        stage('Deploy with Docker Compose') {
             steps {
-                sh 'docker run -d -p 4000:4000 nupmanyu/ruby-sample-app'
+                sh '''
+                    docker-compose down || true
+                    docker-compose pull
+                    docker-compose up -d
+                '''
             }
         }
     }
 }
-
