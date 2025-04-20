@@ -1,5 +1,4 @@
-
-DevOps Assignment – Ruby Sample Application
+**DevOps Assignment – Ruby Sample Application**
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📌 Project Overview
