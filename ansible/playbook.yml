@@ -24,4 +24,7 @@
         state: started
         enabled: true
 
-
+    - name: Install Docker Compose
+      apt:
+        name: docker-compose
+        state: latest
