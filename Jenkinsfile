@@ -32,9 +32,6 @@ pipeline {
         stage('Deploy with Docker Compose') {
             steps {
                 sh '''
-                    # Pull the latest image from Docker Hub
-                    docker-compose pull
-
                     # Start the new container using the updated image
                     docker-compose up -d --build --no-cache
                 '''
