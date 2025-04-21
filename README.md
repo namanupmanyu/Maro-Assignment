@@ -25,13 +25,13 @@ Ruby on Rails (RoR) is a web development framework that follows the MVC (Model-V
 This architecture ensures the application is modular, maintainable, and scalable.
 
 ## 🌿 Branching Strategy
-main:
+master:
 - The production branch
 - Only stable, tested, and approved code is merged here
 - Jenkins is triggered on changes to this branch  
 dev:
-- Previously used for development and testing
-- Not connected to the deployment pipeline anymore
+- Used for development and testing
+- Not connected to the deployment pipeline.
 
 ## 🔁 CI/CD Pipeline (Jenkins)
 - Triggered automatically when changes are pushed to the main branch on GitHub (via webhook)
@@ -49,11 +49,11 @@ dev:
 - Infrastructure as code ensures consistency and repeatability
 
 ## ⚙️ Configuration Management (Ansible)
-- Automates installation of Docker and Docker Compose on EC2
+- Automates the installation of Docker and Docker Compose on EC2
 - Ensures consistent server configuration
 
 ## 🚀 Deployment Workflow
-1. Developer merges tested code into the main branch  
+1. Developer merges the tested code into the main branch  
 2. GitHub webhook triggers Jenkins pipeline  
 3. Docker image is built, tagged, and pushed to Docker Hub  
 4. EC2 pulls the latest image  
