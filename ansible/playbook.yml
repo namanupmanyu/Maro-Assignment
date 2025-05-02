@@ -1,4 +1,4 @@
-- name: Docker and Jenkins on EC2
+- name: Installing Docker, Nginx,Docker-compose and Jenkins
   hosts: ec2
   become: yes
   tasks:
@@ -28,3 +28,44 @@
       apt:
         name: docker-compose
         state: latest
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+    
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Remove Java 11 if installed
+      apt:
+         name: openjdk-11-jdk
+         state: absent
+
+    - name: Installing  Java (required for Jenkins)
+      apt:
+        name: openjdk-17-jdk
+        state: present
+
+    - name: Add Jenkins GPG key
+      apt_key:
+        url: https://pkg.jenkins.io/debian/jenkins.io-2023.key
+        state: present
+
+    - name: Add Jenkins repository
+      apt_repository:
+        repo: deb https://pkg.jenkins.io/debian-stable binary/
+        state: present
+
+    - name: Update apt and install Jenkins
+      apt:
+        name: jenkins
+        state: latest
+        update_cache: true
+
+    - name: Start and enable Jenkins service
+      service:
+        name: jenkins
+        state: started
