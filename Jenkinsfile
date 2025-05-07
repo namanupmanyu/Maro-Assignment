@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh '''
                     # Start the new container using the updated image
-                    docker-compose pull
+                    docker-compose down
 		    docker-compose up -d 
                 '''
             }
