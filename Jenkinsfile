@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh '''
                     # Start the new container using the updated image
-                    docker-compose up -d --build --no-cache
+                    docker-compose up -d --build 
                 '''
             }
         }
